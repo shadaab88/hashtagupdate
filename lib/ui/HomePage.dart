@@ -8,6 +8,7 @@ import 'package:techstagram/views/tabs/chats.dart';
 import 'package:techstagram/views/tabs/feeds.dart';
 import 'package:techstagram/views/tabs/notifications.dart';
 import 'package:techstagram/views/tabs/profile.dart';
+//import 'package:techstagram/pages/home.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title, this.uid}) : super(key: key); //update this to include the uid in the constructor

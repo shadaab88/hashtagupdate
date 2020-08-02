@@ -59,7 +59,7 @@ class _IntroPageState extends State<IntroPage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 25.0),
+            padding: const EdgeInsets.only(left: 25.0,right: 65.0),
             child: Text(
               "Welcome to Hashtag",
               style: TextStyle(
@@ -69,22 +69,22 @@ class _IntroPageState extends State<IntroPage> {
               ),
             ),
           ),
-          FlatButton(
-            onPressed: () {
-              if (initialPage < list.length)
-                _controller.animateToPage(list.length,
-                    duration: Duration(microseconds: 500),
-                    curve: Curves.easeInOut);
-            },
-            child: Text(
-              "Skip",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-                color: Colors.black,
-              ),
-            ),
-          ),
+//          FlatButton(
+//            onPressed: () {
+//              if (initialPage < list.length)
+//                _controller.animateToPage(list.length,
+//                    duration: Duration(microseconds: 500),
+//                    curve: Curves.easeInOut);
+//            },
+//            child: Text(
+//              "Skip",
+//              style: TextStyle(
+//                fontWeight: FontWeight.bold,
+//                fontSize: 16,
+//                color: Colors.black,
+//              ),
+//            ),
+//          ),
         ],
       ),
     );

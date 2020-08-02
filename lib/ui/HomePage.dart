@@ -38,6 +38,42 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.purple,
+          //  backgroundColor: Colors.white,
+          leading: Padding(
+            padding: EdgeInsets.only(left: 12,),
+            child: IconButton(
+              icon: Icon(Icons.camera_alt,color: Colors.white,),
+              onPressed: () {
+                print('Click leading');
+              },
+            ),
+
+          ),
+          title: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children:<Widget>[
+                Text('HashTag',
+                  style: TextStyle(color: Colors.white,),),
+              ]
+          ),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.search,color: Colors.white,),
+              onPressed: () {
+                print('Click search');
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.message,color: Colors.white,),
+              onPressed: () {
+                print('Click start');
+              },
+            ),
+          ],
+
+        ),
 //      appBar: AppBar(
 //        title: Text(widget.title),
 //        actions: <Widget>[
@@ -64,7 +100,7 @@ class _HomePageState extends State<HomePage> {
 ////            child: Text("Welcome")),
 ////
 ////      ),
-      body: new Home(),
+      body: new TabLayoutDemo(),
       
     );
   }
@@ -72,81 +108,138 @@ class _HomePageState extends State<HomePage> {
 
 }
 
-class Home extends StatelessWidget {
+class TabLayoutDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        height: 300,
-        width: double.infinity,
-        child: DefaultTabController(
-            length: 4,
-            child: Scaffold(
-               // bottomNavigationBar: BottomBar(),
-                appBar: AppBar(
-                  elevation: 0.0,
-                  backgroundColor: Colors.transparent,
-                  bottom: PreferredSize(
-                    preferredSize: Size.fromHeight(55),
-                    child: Container(
-                      color: Colors.transparent,
-                      child: SafeArea(
-                        child: Column(
-                          children: <Widget>[
-                            TabBar(
-//                                indicator: UnderlineTabIndicator(
-//                                    borderSide: BorderSide(
-//                                        color: Color(0xffff0863), width: 1.0),
-//                                    insets: EdgeInsets.fromLTRB(
-//                                        30.0, 20.0, 30.0, 0.0)),
-                                indicatorWeight: 15,
-                                indicatorSize: TabBarIndicatorSize.label,
-                                labelColor: Color(0xff2d386b),
-                                labelStyle: TextStyle(
-                                    fontSize: 12,
-                                    letterSpacing: 0.5,
-                                    fontWeight: FontWeight.w500),
-                                unselectedLabelColor: Colors.black26,
-                                tabs: [
-                                  Tab(
-                                    text: "Feed",
-                                    icon: Icon(Icons.rss_feed, size: 30),
-                                  ),
-                                  Tab(
-                                    text: "Comments",
-                                    icon: Icon(Icons.blur_circular, size: 30),
-                                  ),
-                                  Tab(
-                                    text: "Notification",
-                                    icon: Icon(Icons.notifications,
-                                        size: 30),
-                                  ),
-                                  Tab(
-                                    text: "Profile",
-                                    icon: Icon(Icons.account_circle,
-                                        size: 30),
-                                  ),
-                                ])
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
+    // TODO: implement build
+    return new MaterialApp(
+      color: Colors.yellow,
+      home: DefaultTabController(
+        length: 4,
+        child: new Scaffold(
+          body: TabBarView(
+            children: [
+              new Container(
+                child: FeedsPage(),
+              ),
+              new Container(
+                child: ChatsPage(),
+              ),
+              new Container(
+                child: NotificationsPage(),
+              ),
+              new Container(
+                  child: ProfilePage()
+              ),
+            ],
+          ),
+          bottomNavigationBar: new Container(
+        height: 60.0,
+            child: new TabBar(
+              tabs: [
+                Tab(
+                  icon: new Icon(Icons.rss_feed,size: 30),
                 ),
-                body: TabBarView(
-                  children: <Widget>[
-                    Center(
-                      child: FeedsPage(),
-                    ),
-                    Center(
-                      child: ChatsPage(),
-                    ),
-                    Center(
-                      child: NotificationsPage(),
-                    ),
-                    Center(
-                      child: ProfilePage()
-                    ),
-                  ],
-                ))));
+                Tab(
+                  icon: new Icon(Icons.blur_circular,size: 30),
+                ),
+                Tab(
+                  icon: new Icon(Icons.notifications,size: 30),
+                ),
+                Tab(icon: new Icon(Icons.settings,size: 30),)
+              ],
+              labelColor: Colors.white,
+              unselectedLabelColor: Colors.purple[100],
+              indicatorSize: TabBarIndicatorSize.label,
+              indicatorPadding: EdgeInsets.all(5.0),
+              indicatorColor: Colors.red,
+            ),
+          ),
+          backgroundColor: Colors.purple,
+        ),
+      ),
+    );
   }
 }
+
+
+//class Home extends StatelessWidget {
+//  @override
+//  Widget build(BuildContext context) {
+//    return Container(
+//        height: 900,
+//        width: double.infinity,
+//        child: DefaultTabController(
+//            length: 4,
+//            child: Scaffold(
+//               // bottomNavigationBar: BottomBar(),
+//                appBar: AppBar(
+//
+//                  elevation: 0.0,
+//                  backgroundColor: Colors.transparent,
+//                  bottom: PreferredSize(
+//                    preferredSize: Size.fromHeight(70),
+//                    child: Container(
+//                      color: Colors.transparent,
+//                      child: SafeArea(
+//                        child: Column(
+//                          children: <Widget>[
+//                            TabBar(
+//
+//                                indicator: UnderlineTabIndicator(
+//                                    borderSide: BorderSide(
+//                                        color: Colors.purple, width: 1.0,),
+//                                    insets: EdgeInsets.fromLTRB(
+//                                        30.0, 20.0, 30.0, 0.0)),
+//                                indicatorWeight: 0,
+//                                indicatorSize: TabBarIndicatorSize.label,
+//                                labelColor: Color(0xff2d386b),
+//                                labelStyle: TextStyle(
+//                                    fontSize: 12,
+//                                    letterSpacing: 0.5,
+//                                    fontWeight: FontWeight.w500),
+//                                unselectedLabelColor: Colors.black26,
+//                                tabs: [
+//                                  Tab(
+//                                    text: "Feed",
+//                                    icon: Icon(Icons.rss_feed, size: 30),
+//                                  ),
+//                                  Tab(
+//                                    text: "Status",
+//                                    icon: Icon(Icons.blur_circular, size: 30),
+//                                  ),
+//                                  Tab(
+//                                    text: "Notification",
+//                                    icon: Icon(Icons.notifications,
+//                                        size: 30),
+//                                  ),
+//                                  Tab(
+//                                    text: "Profile",
+//                                    icon: Icon(Icons.account_circle,
+//                                        size: 30),
+//                                  ),
+//                                ])
+//                          ],
+//                        ),
+//                      ),
+//                    ),
+//                  ),
+//                ),
+//                body: TabBarView(
+//                  children: <Widget>[
+//                    Center(
+//                      child: FeedsPage(),
+//                    ),
+//                    Center(
+//                      child: ChatsPage(),
+//                    ),
+//                    Center(
+//                      child: NotificationsPage(),
+//                    ),
+//                    Center(
+//                      child: ProfilePage()
+//                    ),
+//                  ],
+//                ))));
+//  }
+//}

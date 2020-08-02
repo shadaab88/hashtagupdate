@@ -41,7 +41,9 @@ class NotificationsPage extends StatelessWidget {
     );
 
     return Scaffold(
-      body: Container(
+     // resizeToAvoidBottomPadding: false,
+      body: SingleChildScrollView(
+        child: Container(
         padding: EdgeInsets.only(
           top: 70.0,
           left: 30.0,
@@ -63,6 +65,7 @@ class NotificationsPage extends StatelessWidget {
             ),
           ],
         ),
+      ),
       ),
     );
   }
